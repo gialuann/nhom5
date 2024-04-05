@@ -36,9 +36,6 @@ Route::get('/', function () {
 Route::get('client/sign-in/login', [LoginController::class,'showLogin'] )->name('client.sign-in.login');
 Route::post('auth/login', [LoginController::class,'login'] )->name('login');
 Route::get('auth/logout', Logout::class )->name('logout');
-Route::get('client/home/howtoknow', function () {
-    return view('client/home/howtoknow');
-})->name('client.home.howtoknow');
 Route::get('/',[BlogController::class ,'blog'])->name('client.home');
 Route::get('/client/head',[BlogController::class ,'head'])->name('client.head');
 Route::prefix('client')->name('client.')->group(function () {
@@ -62,6 +59,7 @@ Route::prefix('client')->name('client.')->group(function () {
     });
     Route::prefix('contactus')->name('contactus.')->controller(ContactusController::class)->group(function () {
         Route::get('show', 'show')->name('show');
+        Route::get('howtoknow', 'howtoknow')->name('howtoknow');
     });
     Route::prefix('mountain')->name('mountain.')->controller(MountainsController::class)->group(function () {
         //vietNam

@@ -45,7 +45,7 @@
                 <li><a href="#">Learn</a>
                     <ul class="sub-menu">
                         <li><a href="#package">About us</a></li>
-                        <li><a href="{{route('client.home.howtoknow')}}">How to know</a></li>
+                        <li><a href="{{route('client.contactus.howtoknow')}}">How to know</a></li>
                     </ul>
                 </li>
                 @if (Auth::check())

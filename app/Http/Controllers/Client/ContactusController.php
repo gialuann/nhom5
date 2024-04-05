@@ -21,4 +21,14 @@ class ContactusController extends Controller
             'countries'=> $country
         ]);
     }
+    public function howtoknow(){
+        $country= Country::get();
+        $join= Join::get();
+        $memberjoin = MemberJoin::get();
+        return view("client.home.howtoknow",[
+            'memberjoins'=>$memberjoin,
+            'joins'=>$join,
+            'countries'=> $country
+        ]);
+    }
 }
