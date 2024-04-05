@@ -8,9 +8,10 @@
     <div class="package-title">
         <h2>Countries</h2>
     </div>
+    <div class="location-container">
     @foreach ($countries as $country ) 
-    <div class="location-content"> 
-         
+    
+    <div class="location-content">      
         <a href="#" >
             <div class="col-content">
                 <img src="{{asset('uploads/')}}/{{$country->image}}" alt="">
@@ -20,5 +21,6 @@
         
     </div>
     @endforeach
+</div>
 </section>
 @endsection
