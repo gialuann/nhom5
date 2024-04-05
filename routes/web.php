@@ -65,47 +65,7 @@ Route::prefix('client')->name('client.')->group(function () {
     });
     Route::prefix('mountain')->name('mountain.')->controller(MountainsController::class)->group(function () {
         //vietNam
-        Route::get('Ba-Den', 'baden')->name('Ba-Den');
-        Route::get('Fansipan', 'fansipan')->name('Fansipan');
-        Route::get('Chua', 'chua')->name('Chua');
-        Route::get('Chua-Chan', 'chuachan')->name('Chua-Chan');
-        Route::get('Langbiang', 'langbiang')->name('Langbiang');
-        Route::get('Pu-Si-Lung', 'pusilung')->name('Pu-Si-Lung');
-        Route::get('Phu-Luong', 'phuluong')->name('Phu-Luong');
-        Route::get('Rao-Co', 'raoco')->name('Rao-Co');
-        //China
-        Route::get('Taishan', 'taishan')->name('Taishan');
-        Route::get('Huashan', 'huashan')->name('Huashan');
-        Route::get('Hengshan', 'hengshan')->name('Hengshan');
-        Route::get('Hanshan', 'hanshan')->name('Hanshan');
-        Route::get('Songshan', 'songshan')->name('Songshan');
-        Route::get('Wudang', 'wudang')->name('Wudang');
-        Route::get('Qingcheng', 'qingcheng')->name('Qingcheng');
-        Route::get('Laojun', 'laojun')->name('Laojun');
-
-        //Japan
-        Route::get('asahi', 'asahi')->name('Asahi');
-        Route::get('zao', 'zao')->name('Zao');
-        Route::get('asama', 'asama')->name('Asama');
-        Route::get('norikura', 'norikura')->name('Norikura');
-        Route::get('fujisan', 'fujisan')->name('Fujisan');
-        Route::get('kitadake', 'kitadake')->name('Kitadake');
-        Route::get('hotakadake', 'hotakadake')->name('Hotakadake');
-        Route::get('yari', 'yari')->name('Yari');
-        //pakistan
-        Route::get('nangaparbat', 'nangaparbat')->name('Nangaparbat');
-        Route::get('k2', 'k2')->name('K2');     
-        Route::get('', '')->name('');
-
-        //india
-        Route::get('Kanchenjunga', 'kanchenjunga')->name('Kanchenjunga');
-        Route::get('Kabru', 'kabru')->name('Kabru');
-        Route::get('Triund', 'triund')->name('Triund');
-        Route::get('Doddabetta', 'doddabetta')->name('Doddabetta');
-        Route::get('Himalaya', 'himalaya')->name('Himalaya');
-        Route::get('Chembra', 'chembra')->name('Chembra');
-        Route::get('Apharwat', 'apharwat')->name('Apharwat');
-        Route::get('Kodachadri', 'kodachadri')->name('Kodachadri');
+       Route::get('mountain/{id}','mountain')->name('mountain');
     });
 });
 Route::prefix('admin')->name('admin.')->group(function () {

@@ -16,7 +16,7 @@
         <div class="box">
             
             <div class="image">
-                <a href="{{route('client.mountain.'.$mountain->name )}}"><img src="{{asset('uploads/')}}/{{$mountain->image}}" alt=""> 
+                <a href="{{route('client.mountain.mountain',['id'=>$mountain->id])}}"><img src="{{asset('uploads/')}}/{{$mountain->image}}" alt=""> 
                 <h3> {{$mountain->name}}</h3>
             </div>
             <div class="stars">
@@ -31,7 +31,7 @@
                     <li><h4>{{$mountain->name}} Mountain </h4></li>
                 <ul class="pac-details">
                     <li>Height {{$mountain->height}}m</li>
-                    <li><p>{{Str::words($mountain->content,15)}} <a href="{{route('client.mountain.'.$mountain->name )}}">Read More</a>
+                    <li><p>{{Str::words($mountain->content,15)}} <a href="{{route('client.mountain.mountain',['id'=>$mountain->id])}}">Read More</a>
                 </ul>
                 </div>
             </div>

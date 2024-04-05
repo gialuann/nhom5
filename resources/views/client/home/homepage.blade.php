@@ -1,13 +1,11 @@
 @extends('client.master')
 @section('title' ,'blog về núi')
 @section('content')
-
-    
-
 <section class="locations" id="locations">
     <div class="package-title">
         <h2>Countries</h2>
     </div>
+    <div class="location-container">
     @foreach ($countries as $country ) 
     <div class="location-content"> 
          
@@ -20,5 +18,6 @@
         
     </div>
     @endforeach
+    </div>
 </section>
 @endsection

@@ -13,6 +13,7 @@ use GuzzleHttp\Client;
 use App\Http\Requests\Admin\Join\StoreRequest;
 use App\Http\Requests\Admin\Join\UpdateRequest;
 use App\Models\MemberJoin;
+use App\Models\Country;
 
 class JoinController extends Controller
 
@@ -21,10 +22,11 @@ class JoinController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {   $country= Country::get();
         $join = Join::with('mountain')->orderBy('created_at','DESC')->get();
         return view('admin.modules.join.index',[
-            'joins' =>$join
+            'joins' =>$join,
+            'countries'=>$country
         ]);
     }
 
@@ -32,12 +34,13 @@ class JoinController extends Controller
      * Show the form for creating a new resource.
      */
     public function create(Request $request)
-    {   
+    {$country= Country::get();   
         $mountain = Mountain::get();
         $mountain =$request->input('mountain_id');
         $mountain->id=session()->get('mountain_id');
         return view('admin.modules.join.create',[
             'mountains' => $mountain,
+            'countries'=>$country
         ]);
     }
 
@@ -45,7 +48,7 @@ class JoinController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StoreRequest $request)
-    {   
+    {$country= Country::get();   
         $join = new Join();
         $join->user_id = $request->user_id;
         $join->infomation=$request->infomation;
@@ -80,12 +83,13 @@ class JoinController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(int $id)
-    {   $mountain = Mountain::get();
+    {$country= Country::get();   $mountain = Mountain::get();
         $join = Join::findOrFail($id);
         return view('admin.modules.join.edit',[
             'id'=>$id,
             'joins' => $join,
             'mountains' => $mountain,
+            'countries'=>$country
         ]);
     }
 
@@ -93,7 +97,7 @@ class JoinController extends Controller
      * Update the specified resource in storage.
      */
     public function update(UpdateRequest $request, int $id)
-    {
+    {$country= Country::get();
         $join = Join::findOrFail($id);
         $join->name = $request->name;
         $join->infomation = $request->infomation;
@@ -109,7 +113,7 @@ class JoinController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(int $id)
-    {
+    {$country= Country::get();
         $join = Join::find($id);
         if($join == null) {
             abort(404);

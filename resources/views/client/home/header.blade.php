@@ -35,14 +35,17 @@
                 @if (Auth::check())
                 <li><a href="#locations">Tours</a>
                     <ul class="sub-menu">
-                        <li><a href="#">Availabled Tours</a></li>                   
+                        <li><a href="{{route('client.tour.show')}}">Availabled Tours</a></li>
+                        <li><a href="{{route('client.tour.memberjoin')}}">MemberJoin</a></li>
+                        <li><a href="{{route('client.tour.showvalidate')}}">Validated Tours</a></li>
+                        <li><a href="{{route('client.tour.showrejected')}}">Rejected Tours</a></li>                   
                     </ul></li>    
                 @endif
-                <li><a href="#">Contact Us</a></li>
+                <li><a href="{{route('client.contactus.show')}}">Contact Us</a></li>
                 <li><a href="#">Learn</a>
                     <ul class="sub-menu">
                         <li><a href="#package">About us</a></li>
-                        <li><a href="#">How to know</a></li>
+                        <li><a href="{{route('client.home.howtoknow')}}">How to know</a></li>
                     </ul>
                 </li>
                 @if (Auth::check())
