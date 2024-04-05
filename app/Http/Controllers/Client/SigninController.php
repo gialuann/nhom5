@@ -47,19 +47,18 @@ class SigninController extends Controller
        ]);
     }
     public function login(LoginRequest $request){
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|string|email',
-            'password' => 'required|string',
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
         ]);
-        if ($validator->fails()) {
-            return response()->json(['error'=>"Login failed!"], 401);      
+   
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('dashboard')
+                        ->withSuccess('Signed in');
         }
- 
-        $user = User::where("email",$request->email)->get();
-        if($user->count()>0){
-            return Response()->json(array("success"=>1,"data"=>$user[0]));
-        }
-        return response()->json(['error'=>"Login failed!"], 401);
+  
+        return redirect("login")->withSuccess('Login details are not valid');
     }
     public function showRegister(){
         $country= Country::get();

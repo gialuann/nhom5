@@ -14,6 +14,9 @@
                          <div class="login__box-input">
                             <input type="email" required class="login__input" id="email" name="email" placeholder=" ">
                             <label for="login-email" class="login__label">Email</label>
+                            @if ($errors->has('email'))
+                            <span class="text-danger">{{ $errors->first('email') }}</span>
+                            @endif
                          </div>
                       </div>
                       <div class="login__box">
@@ -22,6 +25,9 @@
                             <input type="password" required class="login__input" id="password" name="password" placeholder=" ">
                             <label for="login-pass" class="login__label">Password</label>
                             <i class="ri-eye-off-line login__eye" id="login-eye"></i>
+                            @if ($errors->has('password'))
+                            <span class="text-danger">{{ $errors->first('password') }}</span>
+                            @endif
                          </div>
                       </div>
                    </div>
