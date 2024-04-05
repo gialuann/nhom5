@@ -1,9 +1,6 @@
 @extends('client.master')
 @section('title' ,'blog về núi')
 @section('content')
-
-    
-
 <section class="locations" id="locations">
     <div class="package-title">
         <h2>Countries</h2>
@@ -21,6 +18,6 @@
         
     </div>
     @endforeach
-</div>
+    </div>
 </section>
 @endsection
