@@ -3,6 +3,13 @@
 @section('module', 'Mountain')
 @section('action', 'Create')
 
+@push('handlejs')
+<script src="{{asset('administrator/plugins/summernote/summernote-bs4.min.js')}}"></script>
+    <script>
+        $('#description').summernote()
+    </script>
+@endpush
+
 @section('content')
 <form method="post" action="{{ route('admin.mountain.store') }}" enctype="multipart/form-data">
     @csrf
@@ -46,7 +53,7 @@
                     </div>
                     <div class="form-group">
                         <label>description</label>
-                        <textarea class="form-control" name="description">{{old('description')}}</textarea>
+                        <textarea class="form-control" id="description" name="description">{{old('description')}}</textarea>
                     </div>
                     
                     <div class="form-group">

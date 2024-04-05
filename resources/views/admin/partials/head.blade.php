@@ -10,3 +10,4 @@
 <!-- Theme style -->
 <link rel="stylesheet" href="{{asset('administrator/dist/css/adminlte.min.css')}}">
 
+<link rel="stylesheet" href="{{asset('administrator/plugins/summernote/summernote-bs4.min.css')}}">

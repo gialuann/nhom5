@@ -59,7 +59,6 @@ $(function () {
                     <th>Name</th>
                     <th>Height</th>
                     <th>Content</th>
-                    <th>Description</th>
                     <th>Image</th>
                     <th>Create At</th>
                     <th>Edit</th>
@@ -74,7 +73,6 @@ $(function () {
                     <td>{{$mountain->name}}</td>
                     <td>{{number_format($mountain->height , 0,' ','.')}}m</td>
                     <td>{{$mountain->content}}</td>
-                    <td>{{$mountain->description}}</td>
                     <td><img width="250px" src="{{asset('uploads/'.$mountain->image)}}"></td>
                     <td>{{date('d/m/Y - H:m:i', strtotime($mountain->created_at))}}</td>
                     <td><a href="{{route('admin.mountain.edit',['id'=>$mountain->id])}}">Edit</a></td>
@@ -89,7 +87,6 @@ $(function () {
                     <th>Name</th>
                     <th>Height</th>
                     <th>Content</th>
-                    <th>Description</th>
                     <th>Image</th>
                     <th>Create At</th>
                     <th>Edit</th>
