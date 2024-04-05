@@ -47,19 +47,21 @@ class SigninController extends Controller
        ]);
     }
     public function login(LoginRequest $request){
-        $request->validate([
-            'email' => 'required',
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|string|email|',
             'password' => 'required',
         ]);
-   
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard')
-                        ->withSuccess('Signed in');
+        if ($validator->fails()) {
+            return response()->json(['error'=>"Login failed!"], 401);      
         }
-  
-        return redirect("login")->withSuccess('Login details are not valid');
+    
+        $user = User::where("email",$request->email)->get();
+        if($user->count()>0){
+            return response()->json(["success"=>1,"data"=>$user[0]]);
+        }
+        return response()->json(['error'=>"Login failed!"], 401);
     }
+
     public function showRegister(){
         $country= Country::get();
     return view("client.sign-in.register",[
@@ -70,15 +72,16 @@ class SigninController extends Controller
     public function register(RegisterRequest $request){
     
     $validator = Validator::make($request->all(), [
-        'email' => 'required|email|unique:users',
-        'password' => 'required',
-        'password.confirm' => 'required|same:password',
+        'email' => 'required|email|unique:users|regex:/^[a-zA-Z0-9._%+-]+@gmail\.com$/i',
+        'password' => 'required|min:8|confirmed',
         'fullname' => 'required',
     ]);
     if ($validator->fails()) {
         return response()->json(['error'=>$validator->errors()], 401);     
     }
-      
+    return redirect()->route('client.sign-in.login');
+    // Xử lý việc đăng ký nếu dữ liệu hợp lệ
+
     $postArray = [
         'name'      => $request->name,
         'email'     => $request->email,

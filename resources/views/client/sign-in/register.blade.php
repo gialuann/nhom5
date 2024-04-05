@@ -14,27 +14,23 @@
                          <div class="login__box-input">
                             <input type="email" required class="login__input" id="email" name="email" placeholder=" ">
                             <label for="login-email" class="login__label">Email</label>
-                            @if ($errors->has('email'))
-                            <span class="text-danger">{{ $errors->first('email') }}</span>
-                            @endif
+                           
                          </div>
                       </div>
                       <div class="login__box">
                         <i class="fa-solid fa-key"></i>
                          <div class="login__box-input">
-                            <input type="password" required class="login__input" id="password" name="password" placeholder=" ">
+                            <input type="password" required pattern=".{8,}" class="login__input" id="password" name="password" placeholder=" ">
                             <label for="login-pass" class="login__label">Password</label>
                             <i class="ri-eye-off-line login__eye" id="login-eye"></i>
-                            @if ($errors->has('password'))
-                            <span class="text-danger">{{ $errors->first('password') }}</span>
-                            @endif
+                           
                          </div>
                       </div>
                    </div>
                           <div class="login__box">
                            <i class="fa-solid fa-key"></i>
                  <div class="login__box-input">
-                    <input type="password" required class="login__input" id="password.confirm" name="password-confirmation"placeholder=" ">
+                    <input type="password" required pattern=".{8,}" class="login__input" id="password.confirm" name="password-confirmation"placeholder=" ">
                     <label for="login-pass" class="login__label">Password-confirm</label>
                     <i class="ri-eye-off-line login__eye" id="login-eye"></i>
                  </div>
@@ -84,4 +80,17 @@
                 </form>
              </div>
         <!-- Footer -->
+        <script src="">$("#myForm").validate({
+         rules: {
+             password: {
+                 required: true,
+                 minlength: 8
+             }
+         },
+         messages: {
+             password: {
+                 required: "Please provide a password",
+                 minlength: "Your password must be at least 8 characters long"
+             }
+         }})
 @endsection
