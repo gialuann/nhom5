@@ -19,6 +19,12 @@
                 </tr>
             </table>
            <table class="table1" >
+
+
+
+
+
+            
             <tr>
                 <td><img src="https://madisonmountaineering.com/wp-content/uploads/2020/05/03-06_MHW_S20_Learn_ExpeditionHub_RespectLocalCulture_Article_M.jpg" class="img4">
                 <p class="p3">How to Respect and Support Local Culture on an Expedition</p>
