@@ -26,7 +26,7 @@
             <tr>@if ($memberjoin->status==1)    
                 <td>{{$loop->iteration}}</td>
                 <td>{{$memberjoin->join->mountain->name}}</td>
-                <td>{{$memberjoin->join->name}}</td>
+                <td>{{$memberjoin->user->fullname}}</td>
                 <td>{{$memberjoin->join->infomation}}</td>
                 <td>{{$memberjoin->join->quantity}}</td> 
                 
