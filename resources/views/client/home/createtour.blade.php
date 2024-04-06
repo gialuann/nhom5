@@ -109,8 +109,8 @@
             setCaptcha();
     }
     initCaptcha();
-    document.querySelector("#login-btn").addEventListener("click",function(){
-        let inputCaptchaValue = document.querySelector(".captcha-input").value;
+    document.getByElementId("#login-btn").addEventListener("click",function(){
+        let inputCaptchaValue = document.getByElementId("#captcha-form").val();
         if(inputCaptchaValue === captchavalue){
             arlert("","Logging In!","success");
         }else{
