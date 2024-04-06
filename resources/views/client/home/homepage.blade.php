@@ -9,7 +9,7 @@
     @foreach ($countries as $country ) 
     
     <div class="location-content">      
-        <a href="#" >
+        <a href="{{route('client.country.country',['id'=>$country->id])}}" >
             <div class="col-content">
                 <img src="{{asset('uploads/')}}/{{$country->image}}" alt="">
                     <h5>{{$country->name}}</h5>
