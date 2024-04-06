@@ -56,7 +56,6 @@ $(function () {
                 <tr>
                     <th>ID</th>
                     <th>Mountain</th>
-                    <th>Name</th>
                     <th>Infomation</th>
                     <th>Quantity</th>
                     <th>Date</th>
@@ -85,7 +84,6 @@ $(function () {
                 <tr>
                     <th>ID</th>
                     <th>Mountain</th>
-                    <th>Name</th>
                     <th>Infomation</th>
                     <th>Quantity</th>
                     <th>Date</th>

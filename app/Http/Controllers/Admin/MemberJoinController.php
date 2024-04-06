@@ -8,16 +8,18 @@ use App\Models\Join;
 use App\Models\User;
 use App\Models\MemberJoin;
 use Carbon\Carbon;
+use App\Models\Country;
 class MemberJoinController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
-    {   
+    {
+        $country = Country::get();   
         $memberjoin = MemberJoin::with('user')->where('status', '!=' , 4)->orderBy('created_at','DESC')->get();
         return view('client.home.memberjoin',[
-            'memberjoins' =>$memberjoin
+            'memberjoins' =>$memberjoin,'countries'=>$country
         ]);
     }
 
@@ -26,6 +28,7 @@ class MemberJoinController extends Controller
      */
     public function create()
     {
+        $country = Country::get();
         $join = join::get();
         $user = User::get();
         return view('admin.modules.memberjoin.create',[
@@ -39,6 +42,7 @@ class MemberJoinController extends Controller
      */
     public function store(Request $request)
     {
+        $country = Country::get();
         $MemberJoin = new MemberJoin();
         $MemberJoin->user_id = $request->user_id;
         $MemberJoin->join_id = $request->join_id;
@@ -51,6 +55,7 @@ class MemberJoinController extends Controller
      */
     public function show()
     {
+        $country = Country::get();
         
     }
 
@@ -59,6 +64,7 @@ class MemberJoinController extends Controller
      */
     public function edit(int $id)
     {
+        $country = Country::get();
         $memberjoins = MemberJoin::findOrFail($id);
         $join = join::get();
         $user = User::get();
@@ -67,6 +73,7 @@ class MemberJoinController extends Controller
             'joins' => $join,
             'users'=> $user,
             'memberjoins' => $memberjoins,
+            'countries'=>$country
         ]);
     }
 
@@ -75,6 +82,7 @@ class MemberJoinController extends Controller
      */
     public function update(Request $request, int $id)
     {
+        $country = Country::get();
         $memberjoins = MemberJoin::findOrFail($id);
         $memberjoins->user_id = $request->user_id;
         $memberjoins->join_id = $request->join_id;
@@ -88,6 +96,7 @@ class MemberJoinController extends Controller
      */
     public function destroy(int $id)
     {
+        $country = Country::get();
         $memberjoins = MemberJoin::findOrFail($id);
 
         $memberjoins->status=4;
