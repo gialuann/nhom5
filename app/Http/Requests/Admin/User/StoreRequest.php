@@ -23,7 +23,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'email'=>'required|email|unique:users,email',
-            'password'=>'required|confirmed',
+            'password'=>'required|confirmed|min:8',
             'fullname'=>'required',
             'phone'=>'required'
 
@@ -38,7 +38,8 @@ class StoreRequest extends FormRequest
             'fullname.required'=>'Please enter Full Name',
             'phone.required'=>'Please enter the phone number',
             'password.required'=>'Please enter your password',
-            'password.confirmed'=>'The re-entered password does not match'
+            'password.confirmed'=>'The re-entered password does not match',
+            'password.min:8'=>'Password has at least 8 characters'
         ];
     }
 }
