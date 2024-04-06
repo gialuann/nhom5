@@ -56,13 +56,13 @@ $(function () {
                 <tr>
                     <th>ID</th>
                     <th>Mountain</th>
-                    <th>Name</th>
+                    <th>Creator</th>
                     <th>Infomation</th>
                     <th>Quantity</th>
                     <th>Date</th>
                     <th>Edit</th>
                     <th>Delete</th>
-                    <th>List</th>
+                    {{-- <th>List</th> --}}
                     
                 </tr>
             </thead>
@@ -71,13 +71,13 @@ $(function () {
                 <tr>
                     <td>{{$loop->iteration}}</td>
                     <td>{{$join->mountain->name}}</td>
-                    <td>{{$join->name}}</td>
+                    <td>{{$join->user->email}}</td>
                     <td>{{$join->infomation}}</td>
                     <td>{{$join->quantity}}</td>
                     <td>{{date('d/m/Y - H:m:i', strtotime($join->date))}}</td>
                     <td><a href="{{route('admin.join.edit',['id'=>$join->id])}}">Edit</a></td>
                     <td><a onclick="return confirmDelete ()" href="{{route('admin.join.destroy',['id'=>$join->id])}}">Delete</a></td>
-                    <td><button><a href="{{route('admin.memberjoin.index')}}" >Infomation</a></button></td>
+                    {{-- <td><button><a href="{{route('admin.memberjoin.index')}}" >Infomation</a></button></td> --}}
                 </tr>
             </tbody>
             @endforeach
@@ -85,13 +85,13 @@ $(function () {
                 <tr>
                     <th>ID</th>
                     <th>Mountain</th>
-                    <th>Name</th>
+                    <th>Creator</th>
                     <th>Infomation</th>
                     <th>Quantity</th>
                     <th>Date</th>
                     <th>Edit</th>
                     <th>Delete</th>
-                    <th>List</th>
+                    {{-- <th>List</th> --}}
                 </tr>
             </tfoot>
             

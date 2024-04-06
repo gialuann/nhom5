@@ -11,7 +11,7 @@
 <h2>Conquer {{$mountain->name}} Mountain</h2>
 <p>{{$mountain->content}}</p>
 <div><img class="img6" src="{{asset('uploads/')}}/{{$mountain->image}}" alt="nuiba"></div>
-<p>{!! $mountain->description !!}</p>
+<p>{!!$mountain->description!!}</p>
 @include('client.home.createtour', ['id' => $mountain->id])
 </div>
 
