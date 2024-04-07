@@ -7,6 +7,7 @@ use App\Models\Country;
 use App\Models\Mountain;
 use App\Models\MemberJoin;
 use App\Models\Join;
+use Illuminate\Support\Facades\Mail;
 
 class BlogController extends Controller
 {
@@ -35,5 +36,7 @@ class BlogController extends Controller
             'mountains'=>$mountain
         ]);
     }
+
+   
     
 }

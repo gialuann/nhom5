@@ -38,6 +38,10 @@ Route::post('auth/login', [LoginController::class,'login'] )->name('login');
 Route::get('auth/logout', Logout::class )->name('logout');
 Route::get('/',[BlogController::class ,'blog'])->name('client.home');
 Route::get('/client/head',[BlogController::class ,'head'])->name('client.head');
+Route::get('test-email',[BlogController::class ,'testEmail']);
+
+
+
 Route::prefix('client')->name('client.')->group(function () {
     Route::prefix('country')->name('country.')->controller(CountryController::class)->group(function () {
         Route::get('country/{id}', 'country')->name('country');

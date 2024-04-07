@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\DemoMail;
 use Illuminate\Http\Request;
 use App\Models\Join;
 use App\Models\User;
 use App\Models\MemberJoin;
 use Carbon\Carbon;
 use App\Models\Country;
+use Illuminate\Support\Facades\Mail;
+
 class MemberJoinController extends Controller
 {
     /**
@@ -41,12 +44,23 @@ class MemberJoinController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+    {   $joins = Join::get();
         $country = Country::get();
         $MemberJoin = new MemberJoin();
         $MemberJoin->user_id = $request->user_id;
         $MemberJoin->join_id = $request->join_id;
         $MemberJoin->save();
+
+        foreach($joins as $join){
+            $email = $join -> user -> email; 
+         }
+         //gửi email cho người tạo tour
+         Mail::to($email)
+         ->send(new DemoMail($join, 'create'));
+ 
+         // Gửi email cho người đăng ký
+         Mail::to(auth()->user()->email)
+             ->send(new DemoMail($join, 'registrant'));
         return redirect()->route('client.tour.waiting')->with('success','Create country successfully');
     }
 

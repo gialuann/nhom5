@@ -56,10 +56,7 @@ $(function () {
                 <tr>
                     <th>ID</th>
                     <th>Mountain</th>
-<<<<<<< HEAD
                     <th>Creator</th>
-=======
->>>>>>> c2deca2233feccfe67bb42fa81dfea092e30a9d1
                     <th>Infomation</th>
                     <th>Quantity</th>
                     <th>Date</th>
@@ -88,10 +85,7 @@ $(function () {
                 <tr>
                     <th>ID</th>
                     <th>Mountain</th>
-<<<<<<< HEAD
                     <th>Creator</th>
-=======
->>>>>>> c2deca2233feccfe67bb42fa81dfea092e30a9d1
                     <th>Infomation</th>
                     <th>Quantity</th>
                     <th>Date</th>
