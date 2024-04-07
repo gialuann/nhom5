@@ -68,7 +68,6 @@ class JoinController extends Controller
         // Xử lý đăng ký tour ở đây
 
         // Gửi email
-        Mail::to($join->user->email)->send(new TourRegisteredMail($join));
     }
 
     /**
@@ -149,9 +148,6 @@ class JoinController extends Controller
         $memberjoin->join_id = $join_id;
         $memberjoin->user_id = $userId;
         $memberjoin->save();
-
-        Mail::to($user->email)->send(new TourRegisteredMail($user, $join));
-        Mail::to($join->user->email)->send(new TourRegisteredMail($user, $join));
 
         return redirect()->back()->with('success', 'Đăng ký tour thành công và email đã được gửi.');
     } else {
