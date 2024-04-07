@@ -5,9 +5,9 @@
             <div class="footlinks">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="./register.html">Register</a></li>
+                    <li><a href="{{route('client.sign-in.register')}}">Register</a></li>
                     <li><a href="{{route('admin.addcountry.create')}}">Admin</a></li>
-                    <li><a href="./contact.html">Contact Us</a></li>
+                    <li><a href="{{route('client.contactus.show')}}">Contact Us</a></li>
                 </ul>
             </div>
 

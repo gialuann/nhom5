@@ -52,7 +52,7 @@
                 <li>
                     <a href="#">{{Auth::user()->fullname}}</a>
                     <ul class="sub-menu">
-                        <li><a href="#">Infomation</a></li>
+                        <li><a href="{{route('client.contactus.information')}}">Infomation</a></li>
                         <li><a href="{{route('logout')}}">Sign out</a></li>                
                     </ul>
                 </li>    

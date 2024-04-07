@@ -39,9 +39,6 @@ Route::get('auth/logout', Logout::class )->name('logout');
 Route::get('/',[BlogController::class ,'blog'])->name('client.home');
 Route::get('/client/head',[BlogController::class ,'head'])->name('client.head');
 Route::get('test-email',[BlogController::class ,'testEmail']);
-
-
-
 Route::prefix('client')->name('client.')->group(function () {
     Route::prefix('country')->name('country.')->controller(CountryController::class)->group(function () {
         Route::get('country/{id}', 'country')->name('country');
@@ -64,11 +61,13 @@ Route::prefix('client')->name('client.')->group(function () {
     Route::prefix('contactus')->name('contactus.')->controller(ContactusController::class)->group(function () {
         Route::get('show', 'show')->name('show');
         Route::get('howtoknow', 'howtoknow')->name('howtoknow');
+        Route::get('information','information')->name('information');
     });
     Route::prefix('mountain')->name('mountain.')->controller(MountainsController::class)->group(function () {
         //vietNam
        Route::get('mountain/{id}','mountain')->name('mountain');
     });
+    
 });
 Route::prefix('admin')->name('admin.')->group(function () {
         Route::prefix('addcountry')->name('addcountry.')->middleware('check_login')->controller(AddCountryController::class)->group(function () {
