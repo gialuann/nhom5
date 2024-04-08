@@ -8,23 +8,17 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use App\Models\Country;
-use App\Models\Mountain;
-use App\Models\MemberJoin;
-use App\Models\Join;
-class DemoMail extends Mailable
+
+class TourApprovalMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public $join;
-    public $user;
-    public function __construct($join, $user)
-    {   
-        $this->join = $join; 
-        $this->user = $user;
+    public function __construct()
+    {
+        //
     }
 
     /**
@@ -33,7 +27,7 @@ class DemoMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Demo Mail',
+            subject: 'Tour Approval Mail',
         );
     }
 
@@ -41,15 +35,12 @@ class DemoMail extends Mailable
      * Get the message content definition.
      */
     public function content(): Content
-    {   
+    {
         return new Content(
-            view: 'emails.test'
-            );
+            view: 'view.name',
+        );
     }
 
-
-
-    
     /**
      * Get the attachments for the message.
      *

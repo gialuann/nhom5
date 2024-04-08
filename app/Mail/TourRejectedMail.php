@@ -12,7 +12,8 @@ use App\Models\Country;
 use App\Models\Mountain;
 use App\Models\MemberJoin;
 use App\Models\Join;
-class DemoMail extends Mailable
+
+class TourRejectedMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -33,7 +34,7 @@ class DemoMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Demo Mail',
+            subject: 'Tour Rejected Mail',
         );
     }
 
@@ -41,15 +42,12 @@ class DemoMail extends Mailable
      * Get the message content definition.
      */
     public function content(): Content
-    {   
+    {
         return new Content(
-            view: 'emails.test'
-            );
+            view: 'emails.rejected',
+        );
     }
 
-
-
-    
     /**
      * Get the attachments for the message.
      *
