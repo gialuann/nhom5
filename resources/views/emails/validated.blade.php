@@ -63,6 +63,9 @@
                                                                                         <h3>Tour Information</h3>
                                                                                     </td>
                                                                                 </tr>
+
+
+                                                                                
                                                                                 <tr>
                                                                                     <td align="center" class="esd-block-text es-p20t h-auto" valign="middle" height="52">
                                                                                         <p>Mountain : {{$join->mountain->name}}</p>
