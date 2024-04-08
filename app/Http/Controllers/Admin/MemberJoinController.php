@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Mail\DemoMail;
+use App\Mail\TourValidatedMail;
 use Illuminate\Http\Request;
 use App\Models\Join;
 use App\Models\User;
@@ -63,6 +64,7 @@ class MemberJoinController extends Controller
          // Gửi email cho người đăng ký
          Mail::to(auth()->user()->email)
              ->send(new DemoMail($join, 'registrant'));
+        
         return redirect()->route('client.tour.waiting')->with('success','Create country successfully');
     }
 
@@ -84,6 +86,7 @@ class MemberJoinController extends Controller
         $memberjoins = MemberJoin::findOrFail($id);
         $join = join::get();
         $user = User::get();
+
         return view('admin.modules.memberjoin.edit', [
             'id' => $id,
             'joins' => $join,
@@ -104,6 +107,8 @@ class MemberJoinController extends Controller
         $memberjoins->join_id = $request->join_id;
         $memberjoins->status=$request->status;
         $memberjoins->update();
+        Mail::to(auth()->user()->email)
+        ->send(new TourValidatedMail($memberjoins,"validated"));
         return redirect()->route('admin.memberjoin.index')->with('success','Update Memberjoin successfully');
     }
 

@@ -25,6 +25,7 @@ class DemoMail extends Mailable
     {   
         $this->join = $join; 
         $this->user = $user;
+
     }
 
     /**

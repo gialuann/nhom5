@@ -14,7 +14,10 @@ use App\Http\Requests\Admin\Join\StoreRequest;
 use App\Http\Requests\Admin\Join\UpdateRequest;
 use App\Models\MemberJoin;
 use App\Models\Country;
-use DB;
+use Illuminate\Support\Facades\DB;
+
+use Illuminate\Support\Facades\DB as FacadesDB;
+
 class JoinController extends Controller
 
 {
@@ -53,7 +56,7 @@ class JoinController extends Controller
         $join->mountain_id = $request->mountain_id;
         $join->quantity=$request->quantity;
         $join->date = $request->date;
-        $join->status= $request->status;
+        $join->status= 1;
         $join->save();
         return redirect()->route('client.home')->with('success','Create country successfully');
         
@@ -102,7 +105,7 @@ class JoinController extends Controller
         $join->quantity = $request->quantity;
         $join->mountain_id = $request->mountain_id;
         $join->date = $request->date;
-        $join->status= $request->status;
+        $join->status= 1;
         $join->save();
 
         return redirect()->route('admin.join.index')->with('success', 'Update Tour successfully');

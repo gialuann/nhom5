@@ -8,10 +8,6 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use App\Models\Country;
-use App\Models\Mountain;
-use App\Models\MemberJoin;
-use App\Models\Join;
 
 class TourValidatedMail extends Mailable
 {
@@ -20,12 +16,12 @@ class TourValidatedMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public $join;
-    public $user;
-    public function __construct($join, $user)
+    public $memberjoins;
+    public function __construct( $memberjoins)
     {   
-        $this->join = $join; 
-        $this->user = $user;
+        $this->memberjoins = $memberjoins;
+
+
     }
 
     /**
