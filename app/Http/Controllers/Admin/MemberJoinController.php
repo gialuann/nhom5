@@ -11,7 +11,7 @@ use App\Models\MemberJoin;
 use Carbon\Carbon;
 use App\Models\Country;
 use Illuminate\Support\Facades\Mail;
-
+use DB;
 class MemberJoinController extends Controller
 {
     /**
@@ -20,7 +20,7 @@ class MemberJoinController extends Controller
     public function index()
     {
         $country = Country::get();   
-        $memberjoin = MemberJoin::with('user')->where('status', '!=' , 4)->orderBy('created_at','DESC')->get();
+        $memberjoin = MemberJoin::with('user')->where('status', '!=' , 3)->orderBy('created_at','DESC')->get();
         return view('client.home.memberjoin',[
             'memberjoins' =>$memberjoin,'countries'=>$country
         ]);
@@ -49,8 +49,10 @@ class MemberJoinController extends Controller
         $MemberJoin = new MemberJoin();
         $MemberJoin->user_id = $request->user_id;
         $MemberJoin->join_id = $request->join_id;
+        $MemberJoin->status = $request->status;
         $MemberJoin->save();
 
+        
         foreach($joins as $join){
             $email = $join -> user -> email; 
          }
@@ -112,9 +114,7 @@ class MemberJoinController extends Controller
     {
         $country = Country::get();
         $memberjoins = MemberJoin::findOrFail($id);
-
-        $memberjoins->status=4;
-
+        $memberjoins->status=3;
         $memberjoins->save();
 
         return redirect()->route('admin.user.index')->with('success','Delete user successfully');

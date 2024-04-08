@@ -42,12 +42,6 @@
                     </ul></li>    
                 @endif
                 <li><a href="{{route('client.contactus.show')}}">Contact Us</a></li>
-                <li><a href="#">Learn</a>
-                    <ul class="sub-menu">
-                        <li><a href="#package">About us</a></li>
-                        <li><a href="{{route('client.contactus.howtoknow')}}">How to know</a></li>
-                    </ul>
-                </li>
                 @if (Auth::check())
                 <li>
                     <a href="#">{{Auth::user()->fullname}}</a>

@@ -9,7 +9,10 @@
         <div class="title">
             <h1>MOUNTAIN CLIMBING TRIPS</h1>
             <p>Plan your climbing trip with friends on mountains around the world!</p>
-            <a href="{{route('client.sign-in.register')}}" class="button">Register Now!</a>
+            @if (!Auth::check())
+            <a href="{{route('client.sign-in.register')}}" class="button">Register Now!</a> 
+            @endif
+            
         </div>
     </div>
     <div class="package-title">

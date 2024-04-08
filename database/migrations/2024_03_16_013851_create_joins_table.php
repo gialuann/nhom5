@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('mountain_id');
             $table->foreign('mountain_id')->references('id')->on('mountains');
             $table->integer('quantity');
+            $table->tinyInteger('status')->default(1);
             $table->dateTime('date');
             $table->timestamps();
         });

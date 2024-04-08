@@ -14,7 +14,7 @@ use App\Http\Requests\Admin\Join\StoreRequest;
 use App\Http\Requests\Admin\Join\UpdateRequest;
 use App\Models\MemberJoin;
 use App\Models\Country;
-
+use DB;
 class JoinController extends Controller
 
 {
@@ -23,7 +23,7 @@ class JoinController extends Controller
      */
     public function index()
     {   $country= Country::get();
-        $join = Join::with('mountain')->orderBy('created_at','DESC')->get();
+        $join = Join::with('mountain')->where('status', '!=' , 3)->orderBy('created_at','DESC')->get();
         return view('admin.modules.join.index',[
             'joins' =>$join,
             'countries'=>$country
@@ -36,8 +36,6 @@ class JoinController extends Controller
     public function create(Request $request)
     {$country= Country::get();   
         $mountain = Mountain::get();
-        $mountain =$request->input('mountain_id');
-        $mountain->id=session()->get('mountain_id');
         return view('admin.modules.join.create',[
             'mountains' => $mountain,
             'countries'=>$country
@@ -55,6 +53,7 @@ class JoinController extends Controller
         $join->mountain_id = $request->mountain_id;
         $join->quantity=$request->quantity;
         $join->date = $request->date;
+        $join->status= $request->status;
         $join->save();
         return redirect()->route('client.home')->with('success','Create country successfully');
         
@@ -103,6 +102,7 @@ class JoinController extends Controller
         $join->quantity = $request->quantity;
         $join->mountain_id = $request->mountain_id;
         $join->date = $request->date;
+        $join->status= $request->status;
         $join->save();
 
         return redirect()->route('admin.join.index')->with('success', 'Update Tour successfully');
@@ -112,12 +112,15 @@ class JoinController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(int $id)
-    {$country= Country::get();
-        $join = Join::find($id);
-        if($join == null) {
-            abort(404);
-        }
-        $join->delete();
+    {   $country= Country::get();
+        $join = Join::findOrFail($id);
+        DB::table('joins')->where('id',$id)->update([
+            'status' => 3
+        ]);
+
+        DB::table('memberjoins')->where('join_id',$id)->update([
+            'status' => 3
+        ]);
 
         return redirect()->route('admin.join.index')->with('success','Delete tour successfully');
     }
