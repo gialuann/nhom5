@@ -30,10 +30,13 @@ return [
     |
     | Supported: "smtp", "sendmail", "mailgun", "ses", "ses-v2",
     |            "postmark", "log", "array", "failover", "roundrobin"
-    |
+    |        
     */
 
     'mailers' => [
+
+
+        
         'smtp' => [
             'transport' => 'smtp',
             'host' => 'smtp.gmail.com',
