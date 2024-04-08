@@ -78,6 +78,8 @@
                                                                                         <p>Creator : {{$join->user->fullname}}</p>
                                                                                     </td>
                                                                                 </tr>
+
+                                                                                
                                                                                 <tr>
                                                                                     <td align="center" class="esd-block-text es-p20t h-auto" valign="top" height="52">
                                                                                         <p>Information : {{$join->infomation}}</p>
