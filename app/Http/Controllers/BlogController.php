@@ -36,6 +36,17 @@ class BlogController extends Controller
             'mountains'=>$mountain
         ]);
     }
-
+    public function testEmail(){
+        $country= Country::get();
+        $join=Join::get();
+        $memberjoin = MemberJoin::get();
+        $mountain = Mountain::get();
+        return view('emails.test',[
+            'countries' =>$country,
+            'memberjoins'=>$memberjoin,
+            'joins'=>$join,
+            'mountains'=>$mountain
+        ]);
+    }
     
 }

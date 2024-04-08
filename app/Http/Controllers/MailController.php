@@ -24,6 +24,6 @@ class MailController extends Controller
         Mail::to(auth()->user()->email)
             ->send(new DemoMail($join, 'registrant'));
 
-        return view('');
+        
     }
 }

@@ -62,6 +62,7 @@ Route::prefix('client')->name('client.')->group(function () {
         Route::get('show', 'show')->name('show');
         Route::get('howtoknow', 'howtoknow')->name('howtoknow');
         Route::get('information','information')->name('information');
+        Route::get('test','t')->name('');
     });
     Route::prefix('mountain')->name('mountain.')->controller(MountainsController::class)->group(function () {
         //vietNam

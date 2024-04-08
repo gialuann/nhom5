@@ -8,7 +8,10 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-
+use App\Models\Country;
+use App\Models\Mountain;
+use App\Models\MemberJoin;
+use App\Models\Join;
 class DemoMail extends Mailable
 {
     use Queueable, SerializesModels;
@@ -16,9 +19,13 @@ class DemoMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
-    {
-        //
+    public $join;
+    public $user;
+    public function __construct($join, $user)
+    {   
+        $this->join = $join;
+        
+        $this->user = $user;
     }
 
     /**
@@ -35,12 +42,15 @@ class DemoMail extends Mailable
      * Get the message content definition.
      */
     public function content(): Content
-    {
+    {   
         return new Content(
-            view: 'emails.test',
-        );
+            view: 'emails.test'
+            );
     }
 
+
+
+    
     /**
      * Get the attachments for the message.
      *

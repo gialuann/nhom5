@@ -26,7 +26,6 @@
                 @if ($memberjoin->status==2)
                 <td>{{$loop->iteration}}</td>
                 <td>{{$memberjoin->join->mountain->name}}</td>
-                
                 <td>{{$memberjoin->join->infomation}}</td>
                 <td>{{$memberjoin->join->quantity}}</td> 
                 @if ($memberjoin->status == 1)
