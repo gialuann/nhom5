@@ -43,7 +43,8 @@ class TourController extends Controller
         ]);
     }
     public function showrejected()
-    {   $country= Country::get();   $memberjoin = MemberJoin::get();
+    {   $country= Country::get();  
+         $memberjoin = MemberJoin::get();
         return view("client.home.rejected",[
             'countries'=> $country,
             'memberjoins' =>$memberjoin,
@@ -60,11 +61,13 @@ class TourController extends Controller
         ]);
     }
     public function memberjoin(){
+        $join=Join::get();
         $country= Country::get();
-        $memberjoin = MemberJoin::get();
-       
+        $memberjoins = MemberJoin::get();
+        
+      
         return view("client.home.memberjoin",[
-            'memberjoins' =>$memberjoin,
+            'memberjoins' =>$memberjoins,
             'countries'=> $country
         ]);
     }

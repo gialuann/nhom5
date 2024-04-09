@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\MemberJoin;
 use Carbon\Carbon;
 use App\Models\Country;
+use App\Models\Mountain;
 use Illuminate\Support\Facades\Mail;
 use DB;
 class MemberJoinController extends Controller
@@ -83,6 +84,7 @@ class MemberJoinController extends Controller
     public function edit(int $id)
     {
         $country = Country::get();
+        $mountains = Mountain::get();
         $memberjoins = MemberJoin::findOrFail($id);
         $join = join::get();
         $user = User::get();
@@ -92,7 +94,8 @@ class MemberJoinController extends Controller
             'joins' => $join,
             'users'=> $user,
             'memberjoins' => $memberjoins,
-            'countries'=>$country
+            'countries'=>$country,
+            'mountains' =>$mountains
         ]);
     }
 
@@ -107,9 +110,9 @@ class MemberJoinController extends Controller
         $memberjoins->join_id = $request->join_id;
         $memberjoins->status=$request->status;
         $memberjoins->update();
-        Mail::to(auth()->user()->email)
+        Mail::to($memberjoins->user->email)
         ->send(new TourValidatedMail($memberjoins,"validated"));
-        return redirect()->route('admin.memberjoin.index')->with('success','Update Memberjoin successfully');
+        return redirect()->route('client.tour.memberjoin')->with('success','Update Memberjoin successfully');
     }
 
     /**

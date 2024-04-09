@@ -132,6 +132,7 @@
        
             
         @endif
+        @if (Auth::user()->level==2)
         <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
@@ -141,12 +142,14 @@
                 </p>
             </a>
             <ul class="nav nav-treeview">
+
                 {{-- <li class="nav-item">
                     <a href="{{ route('admin.memberjoin.create') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Create</p>
                     </a>
                     </li> --}}
+
                 <li class="nav-item">
                     <a href="{{ route('admin.memberjoin.index') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -155,11 +158,15 @@
                 </li>
             </ul>
         </li>
-
+        @endif
       </ul>
       </nav>
       <!-- /.sidebar-menu -->
       <a href="{{route('logout')}}">Logout</a>
   </div>
+
+
+
+  
   <!-- /.sidebar -->
   </aside>

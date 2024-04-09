@@ -37,7 +37,7 @@ class MailController extends Controller
     $user = User::findOrFail($userId);
     $memberjoins = MemberJoin::findOrFail($memberJoinId);
     $currentStatus = $memberjoins->status;
-
+    $user = $memberjoins->user->email;
     if ($currentStatus == '2') {
         // Logic khi tour được chấp nhận
         Mail::to($user->email)->send(new TourValidatedMail($join));

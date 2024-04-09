@@ -56,7 +56,9 @@ class JoinController extends Controller
         $join->mountain_id = $request->mountain_id;
         $join->quantity=$request->quantity;
         $join->date = $request->date;
-        $join->status= 1;
+
+        $join->status=1;
+
         $join->save();
         return redirect()->route('client.home')->with('success','Create country successfully');
         
@@ -127,6 +129,9 @@ class JoinController extends Controller
 
         return redirect()->route('admin.join.index')->with('success','Delete tour successfully');
     }
+
+
+
 
 
     public function submitForm(Request $request)
