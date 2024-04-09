@@ -86,9 +86,10 @@ class MemberJoinController extends Controller
         $country = Country::get();
         $mountains = Mountain::get();
         $memberjoins = MemberJoin::findOrFail($id);
-        $join = join::get();
-        $user = User::get();
 
+        $join = join::where('id',$memberjoins->join_id)->get();
+       
+        $user = User::where('id',$memberjoins->user_id)->get();
         return view('admin.modules.memberjoin.edit', [
             'id' => $id,
             'joins' => $join,
@@ -110,9 +111,13 @@ class MemberJoinController extends Controller
         $memberjoins->join_id = $request->join_id;
         $memberjoins->status=$request->status;
         $memberjoins->update();
+    
         Mail::to($memberjoins->user->email)
         ->send(new TourValidatedMail($memberjoins,"validated"));
-        return redirect()->route('client.tour.memberjoin')->with('success','Update Memberjoin successfully');
+        if($memberjoins->status == "2"){
+            return redirect()->route('client.tour.showvalidate')->with('success','Update Memberjoin successfully');
+        }
+            return redirect()->route('client.tour.showrejected')->with('success','Update Memberjoin successfully');   
     }
 
     /**

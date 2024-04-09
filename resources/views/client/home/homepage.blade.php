@@ -70,7 +70,9 @@
                         ['user_id', Auth::user()->id]
                     ])->exists();
                     @endphp 
-                    @if (!$registerMember && !($register >= $join->quantity)) 
+                    @if(!(Auth::user()->id == $join->user->id))
+                    @if(!$registerMember)
+                    @if (!($register >= $join->quantity)) 
                     <form action="{{route('admin.memberjoin.store')}}" method="post">
                         @csrf
                     <div id="hiddenElement" style="visibility: hidden;">
@@ -87,6 +89,8 @@
                     </div>              
                     <td><input type="submit" value="Register" class="btn1"></td>         
                     </form>
+                    @endif
+                    @endif
                     @endif
                     @endif 
                 </tr>

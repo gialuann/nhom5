@@ -34,6 +34,9 @@ Route::get('/client/home/dangky', function () {
 Route::get('/', function () {
     return view('client/home/homepage');
 });
+Route::get('/admin/home', function () {
+    return view('admin/partials/home');
+})->name('admin.partials.home');
 Route::get('client/sign-in/login', [LoginController::class,'showLogin'] )->name('client.sign-in.login');
 Route::post('auth/login', [LoginController::class,'login'] )->name('login');
 Route::get('auth/logout', Logout::class )->name('logout');
@@ -129,4 +132,5 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('update/{id}', 'update')->name('update');
             Route::get('destroy/{id}', 'destroy')->name('destroy');
         });
+        
     });

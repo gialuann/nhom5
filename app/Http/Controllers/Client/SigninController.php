@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Carbon;
 use App\Models\Country;
+use Carbon\Carbon as CarbonCarbon;
+
 class SigninController extends Controller
 {
     public function store(Request $request){  
@@ -87,8 +89,6 @@ class SigninController extends Controller
         'email'     => $request->email,
         'password'  => Hash::make($request->password),
         'remember_token' => $request->token,
-        'created_at'=> Carbon::now('Asia/Ho_Chi_Minh'),
-        'updated_at'=>Carbon::now('Asia/Ho_Chi_Minh'),
         'avatar'=> $request->file('UrlImage')->getClientOriginalName()
     ];
 
