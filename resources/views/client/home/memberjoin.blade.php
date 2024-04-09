@@ -21,6 +21,7 @@
                 </tr>
             </thead>
             @foreach ($memberjoins as $memberjoin)
+            @if($memberjoin->status == 1)
             @if (Auth::user()->id ==$memberjoin->join->user_id)
             <tbody class="body1">
                 <tr>
@@ -39,6 +40,7 @@
                     <td><a href="{{route('admin.memberjoin.edit',['id'=>$memberjoin->id])}}">Chose</a></td>
                 </tr>
             </tbody>
+            @endif
             @endif
             @endforeach
             <thead class="head1">

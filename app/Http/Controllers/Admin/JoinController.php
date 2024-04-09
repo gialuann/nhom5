@@ -86,7 +86,8 @@ class JoinController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(int $id)
-    {$country= Country::get();   $mountain = Mountain::get();
+    {   $country= Country::get();   
+        $mountain = Mountain::get();
         $join = Join::findOrFail($id);
         return view('admin.modules.join.edit',[
             'id'=>$id,

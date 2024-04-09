@@ -40,7 +40,7 @@ class MailController extends Controller
 
     if ($currentStatus == '2') {
         // Logic khi tour được chấp nhận
-        Mail::to($user->email)->send(new TourValidatedMail($join));
+        Mail::to($memberjoins->user->email)->send(new TourValidatedMail($join));
     } elseif ($currentStatus == '3') {
         // Logic khi tour bị từ chối
         Mail::to($user->email)->send(new TourValidatedMail($join));
