@@ -31,13 +31,20 @@ class MailController extends Controller
 
 
 
-    public function handleTourDecision($id, $currentStatus)
-    {  
-        $join = Join::findOrFail($id);
-        $memberjoins = MemberJoin::findOrFail($id);
-        $currentStatus = $memberjoins->status;
-            Mail::to(auth()->user()->email)
-            ->send(new DemoMail($memberjoins, "validated"));  
-        }
+    public function handleTourDecision($joinId, $userId, $memberJoinId, $status)
+{  
+    $join = Join::findOrFail($joinId);
+    $user = User::findOrFail($userId);
+    $memberjoins = MemberJoin::findOrFail($memberJoinId);
+    $currentStatus = $memberjoins->status;
+
+    if ($currentStatus == '2') {
+        // Logic khi tour được chấp nhận
+        Mail::to($user->email)->send(new TourValidatedMail($join));
+    } elseif ($currentStatus == '3') {
+        // Logic khi tour bị từ chối
+        Mail::to($user->email)->send(new TourValidatedMail($join));
+    }
+}
     }
 

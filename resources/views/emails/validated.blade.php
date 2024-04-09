@@ -42,7 +42,7 @@
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td align="center" class="esd-block-text es-m-txt-c">
-                                                                                        <h1 style="line-height: 100%; ">{{$memberjoins->status}}</h1>
+                                                                                        <h1 style="line-height: 100%; ">{{$memberjoins->status==2? 'validated' :'rejected'}}</h1>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
@@ -56,38 +56,6 @@
                                                                                 <tr>
                                                                                     <td align="center" class="esd-block-text es-m-txt-c">
                                                                                         <h3>{{Auth::user()->fullname}} Thank for signed in This Tour</h3>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td align="center" class="esd-block-text es-m-txt-c">
-                                                                                        <h3>Tour Information</h3>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td align="center" class="esd-block-text es-p20t h-auto" valign="middle" height="52">
-                                                                                        <p>Mountain : {{$join->mountain->name}}</p>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td align="center" class="esd-block-text es-p20t h-auto" valign="top" height="52">
-                                                                                        <p>height : {{$join->mountain->height}} m</p>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td align="center" class="esd-block-text es-p20t h-auto" valign="top" height="52">
-                                                                                        <p>Creator : {{$join->user->fullname}}</p>
-                                                                                    </td>
-                                                                                </tr>
-
-                                                                                
-                                                                                <tr>
-                                                                                    <td align="center" class="esd-block-text es-p20t h-auto" valign="top" height="52">
-                                                                                        <p>Information : {{$join->infomation}}</p>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td align="center" class="esd-block-text es-p20t h-auto" valign="top" height="52">
-                                                                                        <p>Date-Time : {{$join->date}}</p>
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
