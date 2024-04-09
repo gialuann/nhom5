@@ -151,5 +151,9 @@
       <!-- /.sidebar-menu -->
       <a href="{{route('logout')}}">Logout</a>
   </div>
+
+
+
+  
   <!-- /.sidebar -->
   </aside>
