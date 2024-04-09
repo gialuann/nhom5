@@ -14,7 +14,6 @@
             <tr>
                 <th>ID</th>
                 <th>Mountain</th>
-                
                 <th>Infomation</th>
                 <th>Quantity</th>
                 <th>Status</th>         

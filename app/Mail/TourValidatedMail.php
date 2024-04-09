@@ -30,9 +30,11 @@ class TourValidatedMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Tour Validated Mail',
+            subject: 'Tour Confirmation Notice Mail',
         );
     }
+
+    
 
     /**
      * Get the message content definition.
