@@ -46,5 +46,7 @@ class MailController extends Controller
         Mail::to($user->email)->send(new TourValidatedMail($join));
     }
 }
+
+
     }
 
