@@ -10,14 +10,18 @@
     <link rel="stylesheet" href="{{asset('email/style.css')}}">
     <link href="https://fonts.googleapis.com/css2?family=Changa:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-   
+    <!--<![endif]-->
 </head>
 <body >
     <div style="width: 500ox;
                 margin: auto;
                 padding: 15px;
                 text-align: center;" dir="ltr" class="es-wrapper-color">
-      
+        <!--[if gte mso 9]>
+			<v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
+				<v:fill type="tile" src="https://gcs.tripi.vn/public-tripi/tripi-feed/img/474063Asj/anh-nui-rung-tu-nhien-dep_093057409.jpg" color="#374769" origin="0.5, 0" position="0.5, 0"></v:fill>
+			</v:background>
+		<![endif]-->
         <table class="es-wrapper" width="100%" cellspacing="0" cellpadding="0" background="https://gcs.tripi.vn/public-tripi/tripi-feed/img/474063Asj/anh-nui-rung-tu-nhien-dep_093057409.jpg" style="background-position: center top;">
             <tbody>
                 <tr>
@@ -38,7 +42,7 @@
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td align="center" class="esd-block-text es-m-txt-c">
-                                                                                        <h1 style="line-height: 100%; ">Wellcome</h1>
+                                                                                        <h1 style="line-height: 100%; ">{{$memberjoins->status}}</h1>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>

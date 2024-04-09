@@ -23,9 +23,9 @@ class DemoMail extends Mailable
     public $user;
     public function __construct($join, $user)
     {   
-        $this->join = $join;
-        
+        $this->join = $join; 
         $this->user = $user;
+
     }
 
     /**

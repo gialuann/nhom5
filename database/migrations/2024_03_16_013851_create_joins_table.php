@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->text('infomation');
+            $table->tinyInteger('status')->default(1);
             $table->unsignedBigInteger('mountain_id');
             $table->foreign('mountain_id')->references('id')->on('mountains');
             $table->integer('quantity');

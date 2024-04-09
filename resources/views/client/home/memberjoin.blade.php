@@ -7,7 +7,7 @@
     <img src="{{asset('blog/files/nui4.jpg')}}" class="img1">
     <div class="overlay">MemberJoinList</div>
 </div>
-
+   
 @if (Auth::check())
 <section class="container">
         <table class="tb1"  border="1px">
@@ -21,10 +21,11 @@
                 </tr>
             </thead>
             @foreach ($memberjoins as $memberjoin)
+            @if (Auth::user()->id ==$memberjoin->join->user_id)
             <tbody class="body1">
                 <tr>
                     <td>{{$loop->iteration}}</td>
-                    <td>{{$memberjoin->join->mountain->name}}</td>
+                    <td>{{$memberjoin->join->mountain->name}} </td>
                     <td>{{$memberjoin->user->fullname}}</td>
                     @if ($memberjoin->status == 1)
                         <td><span class="right badge badge-{{$memberjoin->status == 1 ?'dark':'success'}}">Waiting</td>
@@ -38,6 +39,7 @@
                     <td><a href="{{route('admin.memberjoin.edit',['id'=>$memberjoin->id])}}">Chose</a></td>
                 </tr>
             </tbody>
+            @endif
             @endforeach
             <thead class="head1">
                 <tr>
@@ -49,6 +51,7 @@
                 </tr>
             </thead>
         </table>
+        
 @endif
 
 @endsection

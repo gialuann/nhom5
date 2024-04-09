@@ -9,16 +9,19 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class TourRegistrationMail extends Mailable
+class TourValidatedMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct()
-    {
-        //
+    public $memberjoins;
+    public function __construct( $memberjoins)
+    {   
+        $this->memberjoins = $memberjoins;
+
+
     }
 
     /**
@@ -27,7 +30,7 @@ class TourRegistrationMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Tour Registration Mail',
+            subject: 'Tour Validated Mail',
         );
     }
 
@@ -37,7 +40,7 @@ class TourRegistrationMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.validated',
         );
     }
 
@@ -49,8 +52,5 @@ class TourRegistrationMail extends Mailable
     public function attachments(): array
     {
         return [];
-    }
-    public function build(){
-        return $this->subject('xác nhận đăng ký tour')->view('client.home.information');
     }
 }

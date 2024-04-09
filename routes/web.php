@@ -16,6 +16,7 @@ use App\Http\Controllers\Client\ContactusController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\Logout;
 use App\Http\Controllers\Client\MountainsController;
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +39,9 @@ Route::post('auth/login', [LoginController::class,'login'] )->name('login');
 Route::get('auth/logout', Logout::class )->name('logout');
 Route::get('/',[BlogController::class ,'blog'])->name('client.home');
 Route::get('/client/head',[BlogController::class ,'head'])->name('client.head');
-Route::get('test-email',[BlogController::class ,'testEmail']);
+Route::get('test-email',[MailController::class ,'testEmail']);
+Route::get('validated-email',[MailController::class ,'handleTourDecision']);
+
 Route::prefix('client')->name('client.')->group(function () {
     Route::prefix('country')->name('country.')->controller(CountryController::class)->group(function () {
         Route::get('country/{id}', 'country')->name('country');
