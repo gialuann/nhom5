@@ -78,6 +78,11 @@ nav{
 .box{
     width: 20%;
     margin-left: 5px;
+    margin-bottom: 50px;
+    border: 2px solid black;
+    height: 600px;
+    background-color: whitesmoke;
+    border-radius: 40px;
 }
 .image-container {
     position: relative;
@@ -327,7 +332,9 @@ nav ul li a{
 .image img{
     width: 100%;
     height: 300px;
+    margin-top: -50px;
     border-radius: 30px;
+    margin-left: 5px;
 }
 
 .image h3{
@@ -348,7 +355,11 @@ nav ul li a{
     padding-top: 15px;
     margin-bottom: 50px;
     width: 100%;
+    margin-left: 25px;
+    margin-top: -30px;
+
 }
+
 
 .location h4{
     font-size: 25px;

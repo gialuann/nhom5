@@ -52,6 +52,10 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td align="center" class="esd-block-image es-p10t es-p10b" style="font-size: 0px;"><a target="_blank"><img src="https://fibjeko.stripocdn.email/content/guids/CABINET_d9e64e61bd5ab14658ef0c95d79249160dd08cb38b25b963906cfe6c64bad7ae/images/star.png" alt style="display: block;" width="54"></a></td>
+                                                                                </tr><tr>
+                                                                                    <td align="center" class="esd-block-text es-m-txt-c">
+                                                                                        <h3>Mountain : {{$memberjoins->join->mountain->name}}</h3>
+                                                                                    </td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td align="center" class="esd-block-text es-m-txt-c">
