@@ -8,6 +8,7 @@
     <div class="overlay">Avabledila Tour</div>
 </div>
     @if (Auth::check())
+   
     <div class="package-content">  
         @foreach ($joins as $join)
         @php
@@ -33,6 +34,7 @@
                     <li>quantity : {{$join->quantity}} people</li>
                     <li>Date-Time {{date('d/m/Y - H:m:i', strtotime($join->date))}}</li>
                     <li><p>{{Str::words($join->infomation,15)}}
+                        @if(!(Auth::user()->id == $join->user->id))
                         @if (!$registerMember && !($register >= $join->quantity)) 
                         <form action="{{route('admin.memberjoin.store')}}" method="post" style="
                                                                                                 margin-top: -35px;
@@ -52,6 +54,7 @@
                         </div>              
                         <td><input type="submit" value="Register" class="btn1"></td>         
                         </form>
+                        @endif
                         @endif </a></li>
                 </ul>
                 </div>
