@@ -1,5 +1,5 @@
 @extends('client.master')
-@section('title' ,'blog về núi')
+@section('title' ,'Contactus')
 @section('content')
 <section class="container">
     <div class="image-container">

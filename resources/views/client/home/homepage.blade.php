@@ -1,5 +1,5 @@
 @extends('client.master')
-@section('title' ,'blog về núi')
+@section('title' ,'Home')
 
 @section('content')
 
@@ -28,88 +28,69 @@
                     <h5>{{$country->name}}</h5>
             </div>
         </a>
-        
     </div>
     @endforeach
-    
-
     </div>
     <div class="package-title">
         <h2>Availabled Tours</h2>
     </div>
-    <section class="container">
-        <table border="1px" class="tb1">
-            <thead class="head1">
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Creator</th>
-                    <th scope="col">Mountain</th>
-                    <th scope="col">Infomation</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Register Now</th>         
-                </tr>
-            </thead>
-     @foreach ($joins as $join)   
-            <tbody class="body1">
-                <tr>      
-                    <td>{{$loop->iteration}}</td>
-                    <td>{{$join->user->fullname}}</td>
-                    <td>{{$join->mountain->name}}</td>
-                    <td>{{$join->infomation}}</td>
-                    <td>{{$join->quantity}}</td>
-                    <td>{{date('d/m/Y - H:m:i', strtotime($join->date))}}</td> 
+    <div class="package-content">  
+        @foreach ($joins as $join)
+        
+        <div class="box">
+            <div class="image">
+                <img src="{{asset('uploads/')}}/{{$join->mountain->image}}" alt=""> 
+                <h3> {{$join->name}}</h3>
+            </div>
+            <div class="dest-content">
+                <div class="location">
+                    <h4>{{$join->mountain->name}} </h4>
+                <ul class="pac-details">
+                    <li>Creator {{$join->user->fullname}}</li>
+                    <li>quantity : {{$join->quantity}} people</li>
+                    <li>Date-Time {{date('d/m/Y - H:m:i', strtotime($join->date))}}</li>
+                    <li><p>{{Str::words($join->infomation,15)}}
                     @if (Auth::check())
-                    @php
-                    $register = DB::table('memberjoins')->where([
-                        ['join_id', $join->id],
-                        ['status', 1]
-                    ])->count();
-                    $registerMember =DB::table('memberjoins')->where([
-                        ['join_id', $join->id],
-                        ['user_id', Auth::user()->id]
-                    ])->exists();
-                    @endphp 
                     @if(!(Auth::user()->id == $join->user->id))
-                    @if(!$registerMember)
-                    @if (!($register >= $join->quantity)) 
-                    <form action="{{route('admin.memberjoin.store')}}" method="post">
-                        @csrf
-                    <div id="hiddenElement" style="visibility: hidden;">
-                    <select name="join_id">
-                        <option value="{{$join->id}}">{{$join->name}}</option>
-                    </select>
-                    <select name="user_id">
-                        <option value="{{Auth::user()->id}}" >{{Auth::user()->fullname}} </option>
-                    </select>
-                    <label>Status</label>
-                    <select class="form-control" name="status">
-                    <option value="1" selected >validated</option>
-                    </select>
-                    </div>              
-                    <td><input type="submit" value="Register" class="btn1"></td>         
-                    </form>
-                    @endif
-                    @endif
-                    @endif
-                    @endif 
-                </tr>
-            </tbody>
-            @endforeach     
-            <thead class="head1">
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Creator</th>
-                    <th scope="col">Mountain</th>
-                    <th scope="col">Infomation</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Register Now</th>         
-                </tr>
-            </thead>
-        </form>
-        </table>        
-    </section>
+                        @php
+                        $register = DB::table('memberjoins')->where([
+                            ['join_id', $join->id],
+                            ['status', 1]
+                        ])->count();
+                        $registerMember =DB::table('memberjoins')->where([
+                            ['join_id', $join->id],
+                            ['user_id', Auth::user()->id]
+                        ])->exists();
+                    @endphp   
+                        @if (!$registerMember && !($register >= $join->quantity)) 
+                        <form action="{{route('admin.memberjoin.store')}}" method="post" style="
+                                                                                                margin-top: -35px;
+                                                                                                marin-left: -35px;">
+                            @csrf                  
+                        <div id="hiddenElement" style="visibility: hidden;">
+                        <select name="join_id">
+                            <option value="{{$join->id}}">{{$join->name}}</option>
+                        </select>
+                        <select name="user_id">
+                            <option value="{{Auth::user()->id}}" >{{Auth::user()->fullname}} </option>
+                        </select>
+                        <label>Status</label>
+                        <select class="form-control" name="status">
+                        <option value="1" selected >validated</option>
+                        </select>
+                        </div>              
+                        <td><input type="submit" value="Register" class="btn1"></td>  
+                        @endif       
+                        </form>
+                        @endif 
+                        @endif</a></li>
+                </ul>
+                </div>
+            </div>
+        </div> 
+        @endforeach  
+        </div>   
+
     @if (Auth::check())
     <div class="package-title">
         <h2>Create Tour</h2>
@@ -163,15 +144,7 @@
                             <label>Date</label>
                             <input type="datetime-local"  name="date" min="{{ date('Y-m-d') }}"/>
                         </div>   
-                        <div class="captcha">           
-                        <label for="captcha-input">Enter Captcha</label>
-                        <div class="preview"></div>
-                        <div class="captcha-form">
-                            <input type="text" id="captcha-form" placeholder="Enter captcha text" class="captcha-input">
-                            <button class="captcha-refresh">
-                                <i class="fa fa-refresh"></i>
-                            </button>
-                        </div>
+                     
                     </div> 
 
             <div class="form-group">
@@ -182,50 +155,6 @@
     </form>   
 </div>   
 </section>
-@endif
-
-<Script>
-    (function(){
-        const fonts =["cursive","sans-serif","serif","monospace"];
-        let captchavalue ="";
-        function generateCaptcha (){
-        let value = btoa(Math.random()*1000000000);
-        value =value.substr(0,5+Math.random()*5);
-        captchavalue = value;
-        }
-    function setCaptcha(    ){
-       let html= captchavalue.split("").map((char)=>{
-            const rotate =-20 + Math.trunc(Math.random()*30);
-            const font = Math.trunc(Math.random()*fonts.length);
-            return `<span
-                style="
-                transform:rotate(${rotate}deg);
-                font-family:${fonts[font]}
-                ">${char}
-                    </span>`;
-        }).join("");
-        document.querySelector(".form-group .captcha .preview").innerHTML=html;
-    }
-    function initCaptcha(){
-        document.querySelector(".form-group .captcha .captcha-refresh").addEventListener("click",function(){
-            generateCaptcha ();
-            setCaptcha();
-        });
-        generateCaptcha ();
-            setCaptcha();
-    }
-    initCaptcha();
-    document.querySelector("#login-btn").addEventListener("click",function(){
-        let inputCaptchaValue = document.querySelector(".captcha-input").value;
-        if(inputCaptchaValue === captchavalue){
-            arlert("","Logging In!","success");
-        }else{
-            arlert("Invalid captcha");
-        }
-    });
-
-})();
-</Script>
-    
+@endif  
 </section>
 @endsection
