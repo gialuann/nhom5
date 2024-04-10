@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\MemberJoin;
 use Carbon\Carbon;
 use App\Models\Country;
+use App\Models\Mountain;
 use Illuminate\Support\Facades\Mail;
 use DB;
 class MemberJoinController extends Controller
@@ -83,6 +84,7 @@ class MemberJoinController extends Controller
     public function edit(int $id)
     {
         $country = Country::get();
+        $mountains = Mountain::get();
         $memberjoins = MemberJoin::findOrFail($id);
 
         $join = join::where('id',$memberjoins->join_id)->get();
@@ -93,7 +95,8 @@ class MemberJoinController extends Controller
             'joins' => $join,
             'users'=> $user,
             'memberjoins' => $memberjoins,
-            'countries'=>$country
+            'countries'=>$country,
+            'mountains' =>$mountains
         ]);
     }
 
