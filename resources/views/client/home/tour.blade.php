@@ -7,7 +7,7 @@
     <img src="{{asset('blog/files/nui4.jpg')}}" class="img1">
     <div class="overlay">Avabledila Tour</div>
 </div>
-    @if (Auth::check())
+@if (Auth::check())
     <div class="package-content">  
         @foreach ($joins as $join)
         @php
@@ -27,15 +27,17 @@
             </div>
             <div class="dest-content">
                 <div class="location">
-                    <h4>{{$join->infomation}} </h4>
+                    <h4>{{$join->mountain->name}} </h4>
                 <ul class="pac-details">
                     <li>Creator {{$join->user->fullname}}</li>
                     <li>quantity : {{$join->quantity}} people</li>
                     <li>Date-Time {{date('d/m/Y - H:m:i', strtotime($join->date))}}</li>
-                    <li><p>{{Str::words($join->infomation,15)}}
+                    <li>{{$join->infomation}}</li>
+                    @if(!(Auth::user()->id == $join->user->id))
+                    <li>{{$join->infomation}}
                         @if (!$registerMember && !($register >= $join->quantity)) 
                         <form action="{{route('admin.memberjoin.store')}}" method="post" style="
-                                                                                                margin-top: -35px;
+                                                                                                margin-top: -40px;
                                                                                                 marin-left: -35px;">
                             @csrf
                         <div id="hiddenElement" style="visibility: hidden;">
@@ -52,13 +54,16 @@
                         </div>              
                         <td><input type="submit" value="Register" class="btn1"></td>         
                         </form>
-                        @endif </a></li>
+                        @endif
+                        </li>
+                        @endif  
                 </ul>
                 </div>
             </div>
         </div> 
         @endforeach  
         </div>   
+
 @endif
 @endsection
 

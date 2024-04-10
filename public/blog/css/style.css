@@ -77,10 +77,11 @@ nav{
 
 .box{
     width: 20%;
+
     margin-left: 5px;
     margin-bottom: 50px;
     border: 2px solid black;
-    height: 550px;
+    height: auto;
     background-color: whitesmoke;
     border-radius: 40px;
 }
@@ -326,8 +327,12 @@ nav ul li a{
     
 }
 .box{
-    width: 22%;
+    width: 23.5%;
     padding-right: 10px;
+}
+.namemountains{
+    margin-right: -10px;
+    margin-top: -50px;
 }
 .image img{
     width: 100%;
@@ -338,7 +343,7 @@ nav ul li a{
 }
 
 .image h3{
-    color: rgb(200, 221, 9);
+    color: rgb(9, 10, 1);
     position: absolute;
     font-size: 30px;
     font-weight: 600;
@@ -367,6 +372,9 @@ nav ul li a{
     font-weight: 600;
     margin-bottom: 2px;
 }
+.pac-details {
+    width: 95%;
+}
 
 .pac-details li{
     font-size: 19px;
@@ -374,6 +382,7 @@ nav ul li a{
     margin-left: 15px;
     margin-bottom: 2px;
     list-style-type: disc;
+    width: 90%;
 }
 
 .image:hover{
@@ -837,6 +846,11 @@ nav ul li a{
     width: 400px;
     margin-top: 30px;
     margin-bottom: 30px;
+}
+.stars {
+    margin-top: -20px;
+    margin-bottom: 10px;
+    margin-left: 25px;
 }
 
 .stars i{
