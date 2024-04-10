@@ -117,6 +117,11 @@ class MemberJoinController extends Controller
             return redirect()->route('client.tour.showrejected')->with('success','Update Memberjoin successfully');   
     }
 
+
+
+
+    
+
     /**
      * Remove the specified resource from storage.
      */
