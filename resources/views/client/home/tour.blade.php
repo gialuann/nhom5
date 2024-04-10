@@ -7,7 +7,12 @@
     <img src="{{asset('blog/files/nui4.jpg')}}" class="img1">
     <div class="overlay">Avabledila Tour</div>
 </div>
+<<<<<<< HEAD
 @if (Auth::check())
+=======
+    @if (Auth::check())
+   
+>>>>>>> 6cf556106733f494c72623265255bee09245fe63
     <div class="package-content">  
         @foreach ($joins as $join)
         @php
@@ -32,9 +37,14 @@
                     <li>Creator {{$join->user->fullname}}</li>
                     <li>quantity : {{$join->quantity}} people</li>
                     <li>Date-Time {{date('d/m/Y - H:m:i', strtotime($join->date))}}</li>
+<<<<<<< HEAD
                     <li>{{$join->infomation}}</li>
                     @if(!(Auth::user()->id == $join->user->id))
                     <li>{{$join->infomation}}
+=======
+                    <li><p>{{Str::words($join->infomation,15)}}
+                        @if(!(Auth::user()->id == $join->user->id))
+>>>>>>> 6cf556106733f494c72623265255bee09245fe63
                         @if (!$registerMember && !($register >= $join->quantity)) 
                         <form action="{{route('admin.memberjoin.store')}}" method="post" style="
                                                                                                 margin-top: -40px;
@@ -55,8 +65,12 @@
                         <td><input type="submit" value="Register" class="btn1"></td>         
                         </form>
                         @endif
+<<<<<<< HEAD
                         </li>
                         @endif  
+=======
+                        @endif </a></li>
+>>>>>>> 6cf556106733f494c72623265255bee09245fe63
                 </ul>
                 </div>
             </div>
