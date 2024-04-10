@@ -88,7 +88,7 @@ class MemberJoinController extends Controller
         $memberjoins = MemberJoin::findOrFail($id);
 
         $join = join::where('id',$memberjoins->join_id)->get();
-       
+     
         $user = User::where('id',$memberjoins->user_id)->get();
         return view('admin.modules.memberjoin.edit', [
             'id' => $id,
@@ -119,7 +119,6 @@ class MemberJoinController extends Controller
         }
             return redirect()->route('client.tour.showrejected')->with('success','Update Memberjoin successfully');   
     }
-
     /**
      * Remove the specified resource from storage.
      */

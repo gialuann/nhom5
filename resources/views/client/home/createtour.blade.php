@@ -57,15 +57,7 @@
                             <label>Date</label>
                             <input type="datetime-local"  name="date" min="{{ date('Y-m-d') }}"/>
                         </div>   
-                        <div class="captcha">           
-                        <label for="captcha-input">Enter Captcha</label>
-                        <div class="preview"></div>
-                        <div class="captcha-form">
-                            <input type="text" id="captcha-form" placeholder="Enter captcha text" class="captcha-input">
-                            <button class="captcha-refresh">
-                                <i class="fa fa-refresh"></i>
-                            </button>
-                        </div>
+                       
                     </div> 
 
             <div class="form-group">
@@ -78,45 +70,3 @@
 </section>
 @endif
 
-<Script>
-    (function(){
-        const fonts =["cursive","sans-serif","serif","monospace"];
-        let captchavalue ="";
-        function generateCaptcha (){
-        let value = btoa(Math.random()*1000000000);
-        value =value.substr(0,5+Math.random()*5);
-        captchavalue = value;
-        }
-    function setCaptcha(    ){
-       let html= captchavalue.split("").map((char)=>{
-            const rotate =-20 + Math.trunc(Math.random()*30);
-            const font = Math.trunc(Math.random()*fonts.length);
-            return `<span
-                style="
-                transform:rotate(${rotate}deg);
-                font-family:${fonts[font]}
-                ">${char}
-                    </span>`;
-        }).join("");
-        document.querySelector(".form-group .captcha .preview").innerHTML=html;
-    }
-    function initCaptcha(){
-        document.querySelector(".form-group .captcha .captcha-refresh").addEventListener("click",function(){
-            generateCaptcha ();
-            setCaptcha();
-        });
-        generateCaptcha ();
-            setCaptcha();
-    }
-    initCaptcha();
-    document.getByElementId("#login-btn").addEventListener("click",function(){
-        let inputCaptchaValue = document.getByElementId("#captcha-form").val();
-        if(inputCaptchaValue === captchavalue){
-            arlert("","Logging In!","success");
-        }else{
-            arlert("Invalid captcha");
-        }
-    });
-
-})();
-</Script>
